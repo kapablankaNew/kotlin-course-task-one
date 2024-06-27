@@ -1,6 +1,6 @@
 package org.kapablankanew.kotlin.course.tasks.one.impl
 
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.AbstractNode
+import org.kapablankanew.kotlin.course.tasks.one.AbstractNode
 
 open class MutableNode<T> (
     children: MutableMap<String, AbstractNode<T>> = mutableMapOf()

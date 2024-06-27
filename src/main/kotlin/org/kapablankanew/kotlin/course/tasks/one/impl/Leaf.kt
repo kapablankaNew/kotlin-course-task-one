@@ -1,9 +1,9 @@
 package org.kapablankanew.kotlin.course.tasks.one.impl
 
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.AbstractNode
+import org.kapablankanew.kotlin.course.tasks.one.AbstractNode
 
 class Leaf<T>(private val value: T) : AbstractNode<T> {
-    override fun convertSubTreeToMap(): Map<MutableList<String>, T> {
-        return mutableMapOf(mutableListOf<String>() to value)
+    override fun getPathsToLeafs(): Map<List<String>, T> {
+        return mutableMapOf(listOf<String>() to value)
     }
 }

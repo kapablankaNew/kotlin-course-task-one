@@ -3,8 +3,6 @@ package org.kapablankanew.kotlin.course.tasks.one
 import org.kapablankanew.kotlin.course.tasks.one.impl.Leaf
 import org.kapablankanew.kotlin.course.tasks.one.impl.MutableNode
 import org.kapablankanew.kotlin.course.tasks.one.impl.Tree
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.CalculableNode
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.ValidatableNode
 
 fun main(args: Array<String>) {
     val tree = Tree<Int>()
@@ -22,7 +20,7 @@ fun main(args: Array<String>) {
     // nodeFour.addChild("d", nodeThree) - получим ошибку о несоответствии типов
     nodeFour.addChild("d", leaf)
 
-    println(tree.convertSubTreeToMap())
+    println(tree.getPathsToLeafs())
 }
 
 open class TestNodeOne<T> : ValidatableNode<T>, MutableNode<T>() {

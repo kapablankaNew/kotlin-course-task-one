@@ -1,7 +1,7 @@
 package org.kapablankanew.kotlin.course.tasks.one.impl
 
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.AbstractNode
-import org.kapablankanew.kotlin.course.tasks.one.interfaces.ValidatableNode
+import org.kapablankanew.kotlin.course.tasks.one.AbstractNode
+import org.kapablankanew.kotlin.course.tasks.one.ValidatableNode
 import java.lang.IllegalArgumentException
 
 open class ImmutableNode<T> (
@@ -20,13 +20,14 @@ open class ImmutableNode<T> (
         _children = children
     }
 
-    override fun convertSubTreeToMap(): Map<MutableList<String>, T> {
-        val result = mutableMapOf<MutableList<String>, T>()
+    override fun getPathsToLeafs(): Map<List<String>, T> {
+        val result = mutableMapOf<List<String>, T>()
         children.forEach { (key, value) ->
-            value.convertSubTreeToMap().entries
-                .onEach { it.key.add(key) }
-                .forEach { result[it.key] = it.value }
-
+            val subtrees = value.getPathsToLeafs()
+            subtrees.forEach {
+                val updKey = listOf(*it.key.toTypedArray(), key)
+                result[updKey] = it.value
+            }
         }
         return result
     }
